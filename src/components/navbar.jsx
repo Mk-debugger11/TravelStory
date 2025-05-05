@@ -36,7 +36,9 @@ function Navbar({onAdd,onTextAdd,saveBtn,startAnime,startVideo}) {
         setFontSize('20')
     }
     function saveAnimate(){
-        setDisabled(true)
+        setTimeout(()=>{
+            setDisabled(true)
+        },3000)
         startAnime()
     }
   return (
@@ -56,7 +58,7 @@ function Navbar({onAdd,onTextAdd,saveBtn,startAnime,startVideo}) {
             <div className="extraBtn">
                 <button className='extraBtns' onClick={saveAnimate}>Save</button>
                 {disabled && 
-                <div>
+                <div style={{display:'f'}}>
                 <button className='extraBtns' style={{marginRight:'10px'}}onClick={()=>{saveBtn()}}>Export PDF</button>
                 <button className='extraBtns' onClick={()=>{startVideo()}}>Generate Video</button>
                 </div>

@@ -15,6 +15,15 @@ function App() {
   const [elements, setElement] = useState([])
   const canvasRef = useRef();
   const [videoPlay, setVideoPlay] = useState(false)
+  const filterRef = useRef(null)
+  useEffect(()=>{
+    function handleClick(event){
+      if(filterRef.current && !filterRef.current.contains(event.target)){
+        setVideoPlay(false)
+      }
+    }
+    document.addEventListener('mousedown',handleClick)
+  },[])
   useEffect(() => {
     if (percentRef.current) percentRef.current.textContent = `0%`,
       progressRef.current.style.width = `0%`
@@ -34,6 +43,7 @@ function App() {
         onComplete: () => {
           saving.current.textContent = `✅ Journal Saved Successfully`
           saving.current.style.color = "Green"
+          
         }
       })
     }, 50)
@@ -74,14 +84,14 @@ function App() {
   const exportToPDF = async () => {
     const canvasElement = canvasRef.current;
     if (!canvasElement) return;
-
+    const rect = canvasElement.getBoundingClientRect();
     const canvasImage = await html2canvas(canvasElement);
     const imageData = canvasImage.toDataURL('image/png');
 
     const pdf = new jsPDF({
       orientation: 'landscape',
       unit: 'px',
-      format: [canvasElement.offsetWidth, canvasElement.offsetHeight],
+      format: [rect.width, rect.height],
     });
 
     pdf.addImage(imageData, 'PNG', 0, 0);
@@ -113,7 +123,7 @@ function App() {
           </div>
         }
         {videoPlay &&
-          <div className="videoPreview">
+          <div className="videoPreview" ref = {filterRef}>
             <VideoPreview elements={elements} />
             To close the video preview click outside the video player
           </div>

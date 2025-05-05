@@ -8,7 +8,7 @@ const VideoPreview = ({elements}) => {
         <Player
           component={VideoAnimation}
           inputProps={{ elements:elements }}
-          durationInFrames={elements.length*30}  
+          durationInFrames={elements.length*30 || 1}  
           compositionWidth={1400}  
           compositionHeight={747}  
           fps={30}  
