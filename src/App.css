@@ -95,6 +95,7 @@
   position: relative;
   border: 2px solid rgb(111, 110, 110);
   overflow: hidden;
+  background-color: rgb(228, 228, 228);
 }
 .extraBtn{
   display: flex;
@@ -111,4 +112,41 @@
   cursor: pointer;
   border-radius: 10px;
   padding: 4px;
+}
+.animation{
+  width: 500px;
+  height: 200px;
+  position: absolute;
+  border: 1px solid rgb(173, 173, 173);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  top: 300px;border-radius: 20px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+}
+.lower{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.progress-container{
+  width: 400px;
+  height: 20px;
+  background-color: grey;
+  border-radius: 20px;
+}
+.upper{
+  font-size: 20px;
+}
+.progress{
+  background-color: #0573fa;
+  height: 20px;
+  border-radius: 20px;
+}
+.videoPreview{
+  width: 90vw;
+  overflow: hidden;
+  position: absolute;
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import upload from '../assets/upload.png'
-function Navbar({onAdd,onTextAdd,saveBtn}) {
+function Navbar({onAdd,onTextAdd,saveBtn,startAnime,startVideo}) {
     const [text,setText] = useState('')
     const [fontSize,setFontSize] = useState('20')
     const [color,setColor] = useState('#000000')
@@ -37,6 +37,7 @@ function Navbar({onAdd,onTextAdd,saveBtn}) {
     }
     function saveAnimate(){
         setDisabled(true)
+        startAnime()
     }
   return (
     <div className='navbar'>
@@ -57,10 +58,9 @@ function Navbar({onAdd,onTextAdd,saveBtn}) {
                 {disabled && 
                 <div>
                 <button className='extraBtns' style={{marginRight:'10px'}}onClick={()=>{saveBtn()}}>Export PDF</button>
-                <button className='extraBtns' >Generate Video</button>
+                <button className='extraBtns' onClick={()=>{startVideo()}}>Generate Video</button>
                 </div>
                 }
-                
             </div>
         </div>
     </div>
